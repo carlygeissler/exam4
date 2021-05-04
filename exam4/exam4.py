@@ -167,15 +167,19 @@ def main():
   #call calcLinguistic to calculate linguistic complexity
   #write the dataframe to the output file
   
-  #QUESTION: how to include statement about linguistic complexity to command line
+
   for string in stringList:
     i += 1
     outputName = 'output' + str(i) + '.csv'
-    outputFile = open(outputName, 'w')
+    #outputFile = open(outputName, 'w')
+    
+    
   
     totalO, totalP, df = createDF(string)
     linguistic = round(calcLinguistic(totalO, totalP), 3)
   
-    outputFile.write(str(df))
+    df.to_csv(outputName)
     print("Linguistic Complexity =", linguistic)
   
+if __name__ == "__main__":
+  main()
